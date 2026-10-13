@@ -1,0 +1,31 @@
+type Track {
+  id: ID!
+  name: String!
+  color: String!
+}
+
+type Talk {
+  id: ID!
+  title: String!
+  abstract: String!
+  speakerId: String!
+  trackId: String!
+  startTime: String!
+  speaker: Speaker
+  track: Track
+}
+
+type Speaker {
+  id: ID!
+  name: String!
+  bio: String!
+  company: String!
+}
+
+type Query {
+  tracks: [Track!]!
+  talks: [Talk!]!
+  talk(id: ID!): Talk
+  speakers: [Speaker!]!
+  speaker(id: ID!): Speaker
+}

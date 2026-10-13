@@ -1,0 +1,38 @@
+{
+  "tracks": [
+    { "id": "t1", "name": "Frontend", "color": "#3B82F6" },
+    { "id": "t2", "name": "Backend", "color": "#10B981" },
+    { "id": "t3", "name": "Architecture", "color": "#8B5CF6" }
+  ],
+  "speakers": [
+    { "id": "s1", "name": "Ada Lovelace", "bio": "Pionierin der Programmierung.", "company": "Analytical Engines Ltd." },
+    { "id": "s2", "name": "Grace Hopper", "bio": "Erfinderin des ersten Compilers.", "company": "US Navy" },
+    { "id": "s3", "name": "Margaret Hamilton", "bio": "Leitete die Apollo-Flugsoftware.", "company": "NASA" }
+  ],
+  "talks": [
+    {
+      "id": "talk1",
+      "title": "Type-Safe APIs mit OpenAPI",
+      "abstract": "Wie OpenAPI und Code-Generierung eine konsistente API-Kommunikation ermöglichen.",
+      "speakerId": "s1",
+      "trackId": "t2",
+      "startTime": "2025-09-15T09:00:00Z"
+    },
+    {
+      "id": "talk2",
+      "title": "tRPC: Ende-zu-Ende-Typsicherheit",
+      "abstract": "tRPC eliminiert die API-Schicht und bringt volle TypeScript-Sicherheit.",
+      "speakerId": "s2",
+      "trackId": "t1",
+      "startTime": "2025-09-15T10:30:00Z"
+    },
+    {
+      "id": "talk3",
+      "title": "GraphQL und Codegen",
+      "abstract": "Mit GraphQL-Schemas und Codegen zu vollständig typisierten Queries.",
+      "speakerId": "s3",
+      "trackId": "t3",
+      "startTime": "2025-09-15T14:00:00Z"
+    }
+  ]
+}

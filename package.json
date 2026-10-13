@@ -1,0 +1,21 @@
+{
+  "name": "typesafe-front-to-back-handson",
+  "private": true,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "workspaces": [
+    "graphql",
+    "openapi",
+    "orpc",
+    "server-functions",
+    "trpc"
+  ],
+  "scripts": {
+    "dev:graphql": "npm run dev -w graphql",
+    "dev:openapi": "npm run dev -w openapi",
+    "dev:orpc": "npm run dev -w orpc",
+    "dev:server-functions": "npm run dev -w server-functions",
+    "dev:trpc": "npm run dev -w trpc"
+  }
+}

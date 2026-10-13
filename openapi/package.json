@@ -1,0 +1,26 @@
+{
+  "name": "example-openapi",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run server & npm run client",
+    "server": "tsx watch src/server/server.ts",
+    "client": "vite --open",
+    "generate": "openapi-typescript http://localhost:3001/openapi.json -o generated/api.d.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@hono/swagger-ui": "^0.6.1",
+    "@hono/zod-openapi": "^1.6.3",
+    "hono": "^4.13.13",
+    "openapi-fetch": "^0.17.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "openapi-typescript": "^7.13.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^8.3.4"
+  }
+}
