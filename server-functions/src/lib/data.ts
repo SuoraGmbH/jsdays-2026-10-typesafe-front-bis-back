@@ -62,17 +62,17 @@ export function getTalk(id: string) {
 
 // --- Speakers ---
 //
-// Implementiere die folgenden zwei Funktionen:
-//
-// Aufgabe 1: getSpeakers – Liste aller Speaker
-//   - Erstelle eine Funktion analog zu getTracks
-//   - Gib alle Speaker aus data.json zurück
-//
-// Aufgabe 2: getSpeaker – Einzelnen Speaker laden
-//   - Erstelle eine Funktion mit Parameter id: string
-//   - Wirf einen Error wenn der Speaker nicht existiert
-//
-// Tipp: Schau dir getTracks() und getTalks() als Vorlage an.
-//       Keine Router, keine Schemas, keine Middleware –
-//       einfach eine TypeScript-Funktion!
 
+export function getSpeakers() {
+  const { speakers } = loadData();
+  return speakers;
+}
+
+export function getSpeaker(id: string) {
+  const { speakers } = loadData();
+  const speaker = speakers.find((s) => s.id === id);
+  if (!speaker) {
+    throw new Error("Speaker nicht gefunden");
+  }
+  return speaker;
+}

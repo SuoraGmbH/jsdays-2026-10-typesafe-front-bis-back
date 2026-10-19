@@ -61,19 +61,27 @@ const getTalk = os
   });
 
 // --- Speakers ---
-//
-// Implementiere die folgenden zwei Prozeduren:
-//
-// Aufgabe 1: listSpeakers – Liste aller Speaker
-//   - Definiere eine Prozedur mit .route(), .output() und .handler()
-//   - Gib alle Speaker aus data.json zurück
-//
-// Aufgabe 2: getSpeaker – Einzelnen Speaker laden
-//   - Definiere eine Prozedur mit Pfad-Parameter (analog zu getTalk)
-//   - Wirf einen ORPCError("NOT_FOUND") wenn der Speaker nicht existiert
-//
-// Tipp: Schau dir die Track- und Talk-Prozeduren als Vorlage an.
 
+const listSpeakers = os
+  .route({ method: "GET", path: "/speakers", summary: "Alle Speaker auflisten" })
+  .output(z.array(SpeakerSchema))
+  .handler(async () => {
+    const { speakers } = loadData();
+    return speakers;
+  });
+
+const getSpeaker = os
+  .route({ method: "GET", path: "/speakers/{id}", summary: "Einzelnen Speaker laden" })
+  .input(z.object({ id: z.string() }))
+  .output(SpeakerSchema)
+  .handler(async ({ input }) => {
+    const { speakers } = loadData();
+    const speaker = speakers.find((s) => s.id === input.id);
+    if (!speaker) {
+      throw new ORPCError("NOT_FOUND", { message: "Speaker nicht gefunden" });
+    }
+    return speaker;
+  });
 
 // --- Router ---
 // oRPC-Router ist ein einfaches Objekt – Typen fließen automatisch zum Client
@@ -86,11 +94,10 @@ export const router = {
     list: listTalks,
     get: getTalk,
   },
-  // Füge hier die Speaker-Prozeduren ein:
-  // speakers: {
-  //   list: listSpeakers,
-  //   get: getSpeaker,
-  // },
+  speakers: {
+    list: listSpeakers,
+    get: getSpeaker,
+  },
 };
 
 // Typ-Export für den Client (kein Codegen nötig!)

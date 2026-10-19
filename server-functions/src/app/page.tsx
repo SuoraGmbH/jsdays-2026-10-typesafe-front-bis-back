@@ -1,23 +1,14 @@
 import { getTracks } from "@/lib/data";
 import { getTalks } from "@/lib/data";
+import { getSpeakers } from "@/lib/data";
 
 export default async function Page() {
   const tracks = getTracks();
 
   const talks = getTalks();
 
-  // --- Speakers ---
-  // Aufgabe:
-  // 1. Implementiere getSpeakers() in src/lib/data.ts
-  //    (analog zu getTracks / getTalks)
-  // 2. Importiere getSpeakers oben und rufe sie hier auf
-  // 3. Ergänze die Speaker-Cards im JSX unten –
-  //    ersetze die Platzhalter durch die richtigen Felder.
-  //    Tippe s. und schau was die Autovervollständigung vorschlägt!
-  //
-  // Uncomment:
-  // const speakers = getSpeakers();
 
+  const speakers = getSpeakers();
 
   return (
     <main>
@@ -46,17 +37,17 @@ export default async function Page() {
         </div>
       ))}
 
-      {/*
+
       <h2>Speaker</h2>
       {speakers.map((s) => (
         <div key={s.id} className="card">
-          <h3>Hier kommt der Name</h3>
-          <p>Hier kommt die Bio</p>
-          <p><small>Hier kommt die Firma</small></p>
+          <h3>{s.name}</h3>
+          <p>{s.bio}</p>
+          <p>
+            <small>{s.company}</small>
+          </p>
         </div>
       ))}
-      */}
-
     </main>
   );
 }

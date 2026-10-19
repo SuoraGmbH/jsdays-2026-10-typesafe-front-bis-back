@@ -40,27 +40,17 @@ async function render() {
       </div>`;
   });
 
-  // --- Speakers ---
-  // Aufgabe:
-  // 1. Rufe die Speaker mit client.speakers.list() ab
-  //    (funktioniert erst nachdem du die Prozeduren im Router
-  //    definiert und zum Router-Objekt hinzugefügt hast)
-  // 2. Ersetze die Platzhalter im Template unten durch die
-  //    richtigen Felder – tippe s. und schau was die
-  //    Autovervollständigung vorschlägt!
-  //
-  // Uncomment und ergänze:
-  // const speakers = await client.speakers.list();
-  // html += `<h2>Speaker</h2>`;
-  // speakers.forEach((s) => {
-  //   html += `
-  //     <div class="card">
-  //       <h3>Hier kommt der Name</h3>
-  //       <p>Hier kommt die Bio</p>
-  //       <p><small>Hier kommt die Firma</small></p>
-  //     </div>`;
-  // });
 
+  const speakers = await client.speakers.list();
+  html += `<h2>Speaker</h2>`;
+  speakers.forEach((s) => {
+    html += `
+      <div class="card">
+        <h3>${s.name}</h3>
+        <p>${s.bio}</p>
+        <p><small>${s.company}</small></p>
+      </div>`;
+  });
 
   app.innerHTML = html;
 }

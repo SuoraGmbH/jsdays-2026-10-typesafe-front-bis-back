@@ -52,21 +52,25 @@ export const appRouter = t.router({
   }),
 
   // --- Speakers ---
-  //
-  // Implementiere die folgenden zwei Prozeduren:
-  //
-  // Aufgabe 1: listSpeakers – Liste aller Speaker
-  //   - Erstelle eine Query-Prozedur analog zu listTracks
-  //   - Gib alle Speaker aus data.json zurück
-  //
-  // Aufgabe 2: getSpeaker – Einzelnen Speaker laden
-  //   - Erstelle eine Query-Prozedur mit Input { id: string }
-  //   - Wirf einen TRPCError mit code "NOT_FOUND" wenn der Speaker nicht existiert
-  //
-  // Tipp: Schau dir die Track- und Talk-Prozeduren als Vorlage an.
-  //       Bei tRPC brauchst du keine Route-Definition – einfach
-  //       eine Funktion mit optionalem .input() und .query()!
 
+  listSpeakers: publicProcedure.query(() => {
+    const { speakers } = loadData();
+    return speakers;
+  }),
+
+  getSpeaker: publicProcedure
+    .input(z.object({ id: z.string() }))
+    .query(({ input }) => {
+      const { speakers } = loadData();
+      const speaker = speakers.find((s) => s.id === input.id);
+      if (!speaker) {
+        throw new TRPCError({
+          code: "NOT_FOUND",
+          message: "Speaker nicht gefunden",
+        });
+      }
+      return speaker;
+    }),
 });
 
 // Typ-Export – DAS ist der Schlüssel zu tRPC's Type-Safety!
