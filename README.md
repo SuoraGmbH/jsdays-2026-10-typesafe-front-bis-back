@@ -32,3 +32,16 @@ Jede Übung hat eine eigene **README** mit der genauen Aufgabenstellung und eine
 - Die Platzhalter im Client-Code (`"Hier kommt der Name"`) ersetzt du durch Template-Literals wie `${s.name}`.
 - Schau dir die bestehenden Track- und Talk-Implementierungen als Vorlage an.
 - Copy & Paste nicht einfach die existierenden Implementierungen, versuch es selber zu machen :)
+
+<!-- solutions-hint -->
+## Lösungen
+
+Die Musterlösungen liegen im Branch `loesungen`, als ein einziger Commit auf `main` – oder [auf GitHub ansehen](https://github.com/SuoraGmbH/jsdays-2026-10-typesafe-front-bis-back/compare/main...loesungen):
+
+```bash
+git fetch
+git diff origin/main origin/loesungen            # alle Übungen
+git diff origin/main origin/loesungen -- trpc/   # nur eine Übung
+```
+
+Zum Ausprobieren eigene Änderungen mit `git stash` beiseitelegen, dann `git checkout loesungen` und wie gewohnt `npm run dev`.
